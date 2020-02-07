@@ -1,14 +1,12 @@
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+
 public class Parser {
 
     String intake = "";
+    JSONObject obj;
 
     public Parser() throws ParseException {
     }
@@ -16,36 +14,64 @@ public class Parser {
     public void setIntake(String intake) {
         this.intake = intake;
     }
+
+
     public void print() {
         System.out.println(intake);
+
+       obj =  Convert();
+
+       Lets();
+
 
     }
 
 
 
-   // JSONParser parse = new JSONParser();
+         public JSONObject Convert(){
 
-   // JSONObject jobj = (JSONObject) parse.parse(intake);
+             JSONObject  jsonObject=new JSONObject();
 
-  //  JSONArray jsonarr_1 = (JSONArray) jobj.get("results");
+             JSONParser jsonParser=new  JSONParser();
+
+             if ((intake != null) && !(intake.isEmpty())) {
+
+                 try {
+
+                     jsonObject=(JSONObject) jsonParser.parse(intake);
+
+                 } catch (org.json.simple.parser.ParseException e) {
+
+                     e.printStackTrace();
+                 }
+             }
+
+             return jsonObject;
+
+         }
 
 
-    /*public void Lets() {
+
+
+
+
+
+    public void Lets() {
 
         {
-            for (int i=0;i<jsonarr_1.size();i++) {
 
-                JSONObject jsonobj_1 = (JSONObject) jsonarr_1.get(i);
+
+
 
                 System.out.println("array");
 
-                System.out.println("\nPlace id: " + jsonobj_1.get("place_id"));
+                System.out.println("\nName: " + obj.get("name"));
 
-                System.out.println("Types: " + jsonobj_1.get("types"));
+                System.out.println("Types: " + obj.get("main"));
 
 
-            }
+
       }
        }
-    */
+
 }
