@@ -18,11 +18,8 @@ public class main {
 
 
 
-        Fetch fetch =  new Fetch();
-
         Frames frames = new Frames();
-
-        fetch.action();
+        frames.menu();
 
     }
 }

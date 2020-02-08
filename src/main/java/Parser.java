@@ -2,11 +2,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.swing.*;
+
 
 public class Parser {
 
+
     String intake = "";
     JSONObject obj;
+
+    String text;
+    String text1;
+
+
 
     public Parser() throws ParseException {
     }
@@ -16,12 +24,15 @@ public class Parser {
     }
 
 
-    public void print() {
-        System.out.println(intake);
+    public void print(JTextField textField) {
+
 
        obj =  Convert();
-
-       Lets();
+        text1  = (String) obj.get("name").toString();
+        text  = (String) obj.get("main").toString();
+        System.out.println(text);
+        textField.setText(text1 + " " + text);
+      // Lets();
 
 
     }
@@ -50,28 +61,40 @@ public class Parser {
 
          }
 
-
-
-
-
-
+    public String getText() {
+        return text;
+    }
 
     public void Lets() {
 
         {
 
+           // String text  = (String) obj.get("main").toString();
 
 
+            //text = (String) obj.get("name").toString();
 
-                System.out.println("array");
+            //text1 = (String) obj.get("main").toString();
 
-                System.out.println("\nName: " + obj.get("name"));
+           //System.out.println(text + " " + text1);
 
-                System.out.println("Types: " + obj.get("main"));
+          //fr.textas =  (String) obj.get("name").toString();
 
+         // fr.text1 = (String) obj.get("main").toString();
 
+               // frames.set(obj.get("name"),obj.get("main"));
 
       }
        }
+
+
+
+        public void putTextNow (JTextField label) {
+
+            System.out.println(text);
+           // label.setText(text);
+        }
+
+
 
 }

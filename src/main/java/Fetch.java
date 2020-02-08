@@ -6,22 +6,45 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import javax.script.*;
+import javax.swing.*;
 
 public class Fetch {
 
 
 
-    public void action() throws IOException, ParseException {
+    public void action(String s, JTextField textField) throws IOException, ParseException {
+
+
+
 
         Parser parser = new Parser();
 
         String inline = "";
 
-        URL url = new URL(" https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22");
+        String place = "";
+
+        if(s == "Kaunas"){
+
+            place = (" https://api.openweathermap.org/data/2.5/weather?q=Kaunas,lt&units=metric&lang=lt&appid=e4d433c421a7a231d8914ce8f2c3f2db");
+        }
+        else if(s == "Vilnius"){
+
+            place = (" https://api.openweathermap.org/data/2.5/weather?q=Vilnius,lt&units=metric&lang=lt&appid=e4d433c421a7a231d8914ce8f2c3f2db");
+        }
+        else if(s == "Panevezys"){
+
+            place = (" https://api.openweathermap.org/data/2.5/weather?q=Panevezys,lt&units=metric&lang=lt&appid=e4d433c421a7a231d8914ce8f2c3f2db");
+        }
+
+        else if(s == "Klaipeda"){
+
+            place = (" https://api.openweathermap.org/data/2.5/weather?q=Klaipeda,lt&units=metric&lang=lt&appid=e4d433c421a7a231d8914ce8f2c3f2db");
+        }
+
+        URL url = new URL(place);
 
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
 
-      //  https://api.openweathermap.org/data/2.5/weather?q=Kaunas,lt&units=metric&lang=lt&appid=e4d433c421a7a231d8914ce8f2c3f2db");
 
         conn.setRequestMethod("GET");
 
@@ -58,14 +81,18 @@ public class Fetch {
         }
 
 
+        //System.out.println(inline);
 
         parser.setIntake(inline);
 
-        parser.print();
+        parser.print(textField);
+    }
+
+
     }
 
 
 
 
 
-}
+

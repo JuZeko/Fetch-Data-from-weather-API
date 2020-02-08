@@ -1,65 +1,144 @@
+import org.json.simple.parser.ParseException;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class Frames {
 
+    Parser parser = new Parser();
     JFrame frame = new JFrame();
+    String textas;
+    String text1;
+     JLabel labe = new JLabel();
 
-    JPanel panelis = new JPanel();
+    Fetch fetch =  new Fetch();
 
-    String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+    final JComboBox<String> CityStrings = new JComboBox<>(new String[] {"Vilnius", "Kaunas", "Panevezys", "Klaipeda"});
 
-    String[] Cyties = { "Vilnius", "Kaunas" };
-
-    JComboBox city = new JComboBox(Cyties);
-
-    public Frames(){
+    JButton a = new JButton("Spauskite");
 
 
-        addButoons();
 
-        addTextField();
+    JTextField textField = new JTextField(200);
 
-        addJcomboBox();
 
-        frameDisplay();
+
+    public Frames() throws ParseException {
+    }
+
+
+    public void menu() {
+
+    addButoons();
+
+    addTextField();
+
+
+    addJcomboBox();
+
+    ButtonListener();
+
+
+
+    frameDisplay();
+
+}
+
+
+
+    private void ButtonListener() {
+
+        final String[] text = {""};
+
+
+        a.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                text[0] = (String) CityStrings.getSelectedItem();
+
+                try {
+                    fetch.action(text[0],textField);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+
+
+
+
+
+
+
+
+
+
+            }
+        });
 
     }
 
     private void frameDisplay() {
 
-        frame.setSize(600, 400);
+
+
+
+
+
+
+        frame.setSize(1200, 400);
 
         frame.setTitle("Weather in Lithuania");
+
+        frame.setBackground(Color.cyan);
 
         frame.setVisible(true);
     }
 
     private void addJcomboBox() {
 
-        JComboBox petList = new JComboBox(petStrings);
 
-        petList.setSelectedIndex(4);
 
-        frame.add(petList,BorderLayout.NORTH);
+        CityStrings.setSelectedIndex(1);
+
+
+
+       frame.add(CityStrings,BorderLayout.NORTH);
 
     }
 
     private void addTextField() {
+        Font font1 = new Font("SansSerif", Font.BOLD, 20);
 
-        JTextField textField = new JTextField(20);
 
+
+
+        textField.setSize(100,100);
+        textField.setFont(font1);
         frame.add(textField,BorderLayout.WEST);
 
     }
 
+
+
+
+
     private void addButoons() {
 
-        JButton a = new JButton("Spauskite");
+
 
         frame.add(a,BorderLayout.SOUTH);
     }
+
+
+
+
+
 
 
 }
