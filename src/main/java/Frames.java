@@ -9,9 +9,11 @@ import java.io.IOException;
 public class Frames {
 
     Parser parser = new Parser();
+
     JFrame frame = new JFrame();
-    String textas;
-    String text1;
+
+    String textas; String text1;
+
      JLabel labe = new JLabel();
 
     Fetch fetch =  new Fetch();
@@ -48,7 +50,6 @@ public class Frames {
 }
 
 
-
     private void ButtonListener() {
 
         final String[] text = {""};
@@ -69,27 +70,12 @@ public class Frames {
                     ex.printStackTrace();
                 }
 
-
-
-
-
-
-
-
-
-
             }
         });
 
     }
 
     private void frameDisplay() {
-
-
-
-
-
-
 
         frame.setSize(1200, 400);
 
@@ -102,11 +88,7 @@ public class Frames {
 
     private void addJcomboBox() {
 
-
-
         CityStrings.setSelectedIndex(1);
-
-
 
        frame.add(CityStrings,BorderLayout.NORTH);
 
@@ -115,30 +97,17 @@ public class Frames {
     private void addTextField() {
         Font font1 = new Font("SansSerif", Font.BOLD, 20);
 
-
-
-
         textField.setSize(100,100);
+
         textField.setFont(font1);
+
         frame.add(textField,BorderLayout.WEST);
 
     }
 
-
-
-
-
     private void addButoons() {
-
-
 
         frame.add(a,BorderLayout.SOUTH);
     }
-
-
-
-
-
-
 
 }

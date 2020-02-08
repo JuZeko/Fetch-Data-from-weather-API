@@ -81,7 +81,7 @@ public class Fetch {
         }
 
 
-        //System.out.println(inline);
+
 
         parser.setIntake(inline);
 

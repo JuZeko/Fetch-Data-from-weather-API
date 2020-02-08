@@ -19,6 +19,7 @@ public class main {
 
 
         Frames frames = new Frames();
+
         frames.menu();
 
     }
